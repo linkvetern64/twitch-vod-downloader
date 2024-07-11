@@ -21,22 +21,6 @@ def fetch_response(id):
     chrome_options.add_argument("--headless=new")
     driver = webdriver.Chrome(chrome_options=chrome_options)
     driver.get(url)
-    #for request in driver.requests:
-    #    if request.response:
-    #        print(
-    #            request.url,
-    #            request.response.status_code,
-    #            request.response.headers['Content-Type'])
-
-
-    # Need to download index-dvr.m3u8 and save to virtual file
-    # Need to be able to specify the resolution / fps in the URL
-    # Need to get how many .ts files there are
-    # Need to figure out the length of the last .ts file for ffmpeg?
-    # Need to create a dir to save off the .ts files
-    # Need to install FFMPEG and run the .ts files through it to encode mp4
-    # Move mp4 to output dir and clean up .ts files
-    #driver.quit()
     return driver.requests
 
 def create_dir(tmp_dir):
@@ -53,6 +37,7 @@ def remove_dir(tmp_dir):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    #TODO: Need to add CLI flags to drive app
     id = 2192808460
     temp_dir = "/tmp/." + str(id)
     #fetch_response(2174049535)
@@ -69,20 +54,7 @@ if __name__ == '__main__':
         create_dir(temp_dir)
 
         driver.get(url)
-        # for request in driver.requests:
-        #    if request.response:
-        #        print(
-        #            request.url,
-        #            request.response.status_code,
-        #            request.response.headers['Content-Type'])
 
-        # Need to download index-dvr.m3u8 and save to virtual file
-        # Need to be able to specify the resolution / fps in the URL
-        # Need to get how many .ts files there are
-        # Need to figure out the length of the last .ts file for ffmpeg?
-        # Need to create a dir to save off the .ts files
-        # Need to install FFMPEG and run the .ts files through it to encode mp4
-        # Move mp4 to output dir and clean up .ts files
 
         REQUESTED_RES = "720p60"
         m3u8_file = None
